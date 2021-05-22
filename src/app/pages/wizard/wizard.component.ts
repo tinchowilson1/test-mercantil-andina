@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
-import { User } from 'src/app/model/user';
-import { AppComponent } from 'src/app/app.component';
-import { AfipService } from 'src/app/services/afip.service';
+import { Observable, of } from 'rxjs';
+import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 
 
 @Component({
@@ -12,35 +10,61 @@ import { AfipService } from 'src/app/services/afip.service';
 })
 
 export class WizardComponent implements OnInit {
-    currentUser: User;
-    wizard: any[] = [];
-    constructor(
-                private router: Router,
-                public app: AppComponent,
-                private afipService: AfipService
-    ) {
 
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.getwizardList();
+    constructor(private ngWizardService: NgWizardService) {
     }
+    stepStates = {
+        normal: STEP_STATE.normal,
+        disabled: STEP_STATE.disabled,
+        error: STEP_STATE.error,
+        hidden: STEP_STATE.hidden
+    };
+
+    config: NgWizardConfig = {
+        selected: 0,
+        theme: THEME.arrows,
+        toolbarSettings: {
+            toolbarExtraButtons: [
+                { text: 'Finish', class: 'btn btn-info', event: () => { alert('Finished!!!'); } }
+            ],
+        }
+    };
+
+    isValidTypeBoolean = true;
 
     ngOnInit(): void {
-        window.scroll(0, 0);
     }
 
-    // private getwizardList() {
-    //     this.afipService.getwizardList()
-    //         .then(
-    //             data => {
-    //                 if (data.OperationStatus === 'Ok') {
-    //                     this.wizard = data.wizardList;
-    //                 }
-    //             })
-    //         .catch(error => this.handleError(error));
-    // }
+    showPreviousStep(event?: Event): void {
+        this.ngWizardService.previous();
+    }
+
+    showNextStep(event?: Event): void {
+        this.ngWizardService.next();
+    }
+
+    resetWizard(event?: Event): void {
+        this.ngWizardService.reset();
+    }
+
+    setTheme(theme: THEME): void {
+        this.ngWizardService.theme(theme);
+    }
+
+    stepChanged(args: StepChangedArgs): void {
+        console.log(args.step);
+    }
+
+    isValidFunctionReturnsBoolean(args: StepValidationArgs): boolean {
+        return true;
+    }
+
+    isValidFunctionReturnsObservable(args: StepValidationArgs): Observable<boolean> {
+        return of(true);
+    }
 
     private handleError(error): void {
-        this.app.showLoader = false;
-        this.app.showNotification('error', error);
+        // this.app.showLoader = false;
+        // this.app.showNotification('error', error);
     }
 }
