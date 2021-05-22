@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,8 +11,19 @@ import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, S
 })
 
 export class WizardComponent implements OnInit {
+    showNextButton = true;
+    isValidTypeBoolean = true;
+    model: any = {};
+    datosPersonalesForm: FormGroup;
 
-    constructor(private ngWizardService: NgWizardService) {
+    constructor(
+        private ngWizardService: NgWizardService,
+        formBuilder: FormBuilder
+    ) {
+        this.datosPersonalesForm = formBuilder.group({
+            dni: new FormControl('',
+                Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(8)]))
+        });
     }
     stepStates = {
         normal: STEP_STATE.normal,
@@ -23,14 +35,25 @@ export class WizardComponent implements OnInit {
     config: NgWizardConfig = {
         selected: 0,
         theme: THEME.arrows,
+        lang: { next: 'Siguiente', previous: 'Anterior' },
         toolbarSettings: {
+            showNextButton: this.showNextButton,
             toolbarExtraButtons: [
-                { text: 'Finish', class: 'btn btn-info', event: () => { alert('Finished!!!'); } }
+                { text: 'Finalizar', class: 'btn btn-dark', event: () => { alert('Finished!!!'); } }
             ],
         }
     };
 
-    isValidTypeBoolean = true;
+
+    sendInfo() { }
+
+    markAsTouched(form: NgForm) {
+        for (const key in form.controls) {
+            form.controls[key].markAsTouched();
+            form.controls[key].markAsDirty();
+        }
+        return true;
+    }
 
     ngOnInit(): void {
     }
@@ -52,6 +75,11 @@ export class WizardComponent implements OnInit {
     }
 
     stepChanged(args: StepChangedArgs): void {
+        if (args.position === 'final') {
+            this.showNextButton = false;
+        } else {
+            this.showNextButton = true;
+        }
         console.log(args.step);
     }
 

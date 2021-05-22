@@ -13,3 +13,9 @@
 @import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
 
 /* IMPORTS WIZARD */
+
+.black-body {
+    /* background-color: #1f1f1f; */
+    margin-top: 60px;
+    height: 100vh;
+}
