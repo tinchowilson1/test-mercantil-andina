@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { MockMercantilAndinaService } from 'src/app/services/mock-mercantil-andina.service';
+import { Cobertura } from 'src/app/model/cobertura';
+import { DatosGeograficosService } from 'src/app/services/datos-geograficos.service';
 
 
 @Component({
@@ -14,16 +17,19 @@ export class WizardComponent implements OnInit {
     showNextButton = true;
     isValidTypeBoolean = true;
     model: any = {};
-    datosPersonalesForm: FormGroup;
+    datosPersonalesForm: NgForm;
+    datosVehiculoForm: NgForm;
+    coberturas: Cobertura[];
+    provincias: any[] = [];
+    ciudades: any[] = [];
 
     constructor(
         private ngWizardService: NgWizardService,
-        formBuilder: FormBuilder
+        private mockMercantilAndinaService: MockMercantilAndinaService,
+        private datosGeograficosService: DatosGeograficosService
     ) {
-        this.datosPersonalesForm = formBuilder.group({
-            dni: new FormControl('',
-                Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(8)]))
-        });
+        this.getCoberturasDisponibles();
+        this.getProvincias();
     }
     stepStates = {
         normal: STEP_STATE.normal,
@@ -37,7 +43,8 @@ export class WizardComponent implements OnInit {
         theme: THEME.arrows,
         lang: { next: 'Siguiente', previous: 'Anterior' },
         toolbarSettings: {
-            showNextButton: this.showNextButton,
+            showNextButton: false,
+            showPreviousButton: false,
             toolbarExtraButtons: [
                 { text: 'Finalizar', class: 'btn btn-dark', event: () => { alert('Finished!!!'); } }
             ],
@@ -45,7 +52,15 @@ export class WizardComponent implements OnInit {
     };
 
 
-    sendInfo() { }
+    sendInfo(form: NgForm): void {
+        this.datosPersonalesForm = form;
+        this.ngWizardService.next();
+    }
+
+    datosVehiculoNext(form: NgForm): void {
+        this.datosVehiculoForm = form;
+        this.ngWizardService.next();
+    }
 
     markAsTouched(form: NgForm) {
         for (const key in form.controls) {
@@ -56,6 +71,40 @@ export class WizardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.model.Ciudad = '';
+    }
+
+    private getCoberturasDisponibles(): void {
+        this.mockMercantilAndinaService.getCoberturasDisponibles()
+            .then(
+                data => {
+                    this.coberturas = data;
+                })
+            .catch(error => this.handleError(error));
+    }
+
+    private getProvincias(): void {
+        this.datosGeograficosService.getProvincias()
+            .then(
+                data => {
+                    if (data != null && data.provincias != null) {
+                        this.provincias = data.provincias;
+                        this.model.Provincia = '';
+                    }
+                })
+            .catch(error => this.handleError(error));
+    }
+
+    public cargarCiudades(): void {
+        this.datosGeograficosService.getMunicipios(this.model.Provincia)
+            .then(
+                data => {
+                    if (data != null && data.municipios != null) {
+                        this.ciudades = data.municipios;
+                        this.model.Ciudad = '';
+                    }
+                })
+            .catch(error => this.handleError(error));
     }
 
     showPreviousStep(event?: Event): void {

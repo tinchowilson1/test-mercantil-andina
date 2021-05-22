@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
     })
 };
-const BASE_API = 'https://servicios.qamercantilandina.com.ar/api/v1';
+const BASE_API = 'https://servicios.qamercantilandina.com.ar/api_mock_frontend/v1';
 
 @Injectable()
-export class MercantilAndinaService {
+export class MockMercantilAndinaService {
     constructor(
         private http: HttpClient
     ) {}
 
-    // SERVICIO PARA OBTENER LAS MARCAS
-    async getMarcasList(): Promise<any> {
+    // SERVICIO PARA VER DISPONIBILIDAD DE USUARIO
+    async usuarioExist(nombreUsuario: string): Promise<any> {
         try {
             const response = await this.http
-                .get(`${BASE_API}/vehiculos/marcas`, HTTP_OPTIONS)
+                .get(`${BASE_API}/usuarios?nombre=${nombreUsuario}`, HTTP_OPTIONS)
                 .toPromise();
             return response;
         } catch (error) {
@@ -26,23 +27,11 @@ export class MercantilAndinaService {
         }
     }
 
-    // SERVICIO PARA OBTENER LOS MODELOS
-    async getModelosList(codigo: number, anio: number): Promise<any> {
+    // SERVICIO PARA OBTENER LAS COBERTURAS DISPONIBLES
+    async getCoberturasDisponibles(): Promise<any> {
         try {
             const response = await this.http
-                .get(`${BASE_API}/vehiculos/marcas/${codigo}/${anio}`, HTTP_OPTIONS)
-                .toPromise();
-            return response;
-        } catch (error) {
-            return this.handleError(error);
-        }
-    }
-
-    // SERVICIO PARA OBTENER LAS VERSIONES
-    async getVersionesList(codigo: number, anio: number, modelo: number): Promise<any> {
-        try {
-            const response = await this.http
-                .get(`${BASE_API}/vehiculos/marcas/${codigo}/${anio}/${modelo}`, HTTP_OPTIONS)
+                .get(`${BASE_API}/coberturas`, HTTP_OPTIONS)
                 .toPromise();
             return response;
         } catch (error) {

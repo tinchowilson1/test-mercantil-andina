@@ -3,9 +3,11 @@ import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 
 import { WizardComponent } from './wizard.component';
 import { WizardRoutingModule } from './wizard.routing';
-import { ReactiveFormsModule } from '@angular/forms';
-// import { UserService } from 'src/app/services/user.service';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { MockMercantilAndinaService } from 'src/app/services/mock-mercantil-andina.service';
+import { DatosGeograficosService } from 'src/app/services/datos-geograficos.service';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.arrows
@@ -15,14 +17,16 @@ const ngWizardConfig: NgWizardConfig = {
     imports: [
         WizardRoutingModule,
         NgWizardModule.forRoot(ngWizardConfig),
-        ReactiveFormsModule
-        //   FontAwesomeModule,
+        ReactiveFormsModule,
+        CommonModule,
+        FormsModule
     ],
     declarations: [
         WizardComponent,
     ],
     providers: [
-        //   UserService,
+        MockMercantilAndinaService,
+        DatosGeograficosService
     ]
 })
 export class WizardModule { }
