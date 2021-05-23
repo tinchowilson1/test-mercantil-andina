@@ -17,8 +17,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="text" [(ngModel)]="model.DNI" #DNI="ngModel" name="DNI"
-                                                    class="form-control" required placeholder="DNI" minlength="7" pattern="\d*"
-                                                    maxlength="8"
+                                                    class="form-control" required placeholder="DNI" minlength="7"
+                                                    pattern="\d*" maxlength="8"
                                                     [ngClass]="{'is-valid': DNI.valid && DNI.touched, 'is-invalid': DNI.invalid && DNI.touched}">
                                             </div>
                                         </div>
@@ -41,8 +41,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="text" [(ngModel)]="model.Nombre" #Nombre="ngModel"
-                                                    name="Nombre" class="form-control" required placeholder="Nombre" pattern="[a-zA-Z]+"
-                                                    title="Sólo letras" minlength="2" maxlength="15"
+                                                    name="Nombre" class="form-control" required placeholder="Nombre"
+                                                    pattern="[a-zA-Z]+" title="Sólo letras" minlength="2" maxlength="15"
                                                     [ngClass]="{'is-valid': Nombre.valid && Nombre.touched, 'is-invalid': Nombre.invalid && Nombre.touched}">
                                             </div>
                                         </div>
@@ -66,8 +66,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="text" [(ngModel)]="model.Apellido" #Apellido="ngModel"
-                                                    name="Apellido" class="form-control" required placeholder="Apellido" pattern="[a-zA-Z]+"
-                                                    title="Sólo letras" minlength="2" maxlength="15"
+                                                    name="Apellido" class="form-control" required placeholder="Apellido"
+                                                    pattern="[a-zA-Z]+" title="Sólo letras" minlength="2" maxlength="15"
                                                     [ngClass]="{'is-valid': Apellido.valid && Apellido.touched, 'is-invalid': Apellido.invalid && Apellido.touched}">
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                             <div class="col-10">
                                                 <input type="email" [(ngModel)]="model.Email" #Email="ngModel"
                                                     name="Email" class="form-control" required placeholder="Email"
-                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                                     [ngClass]="{'is-valid': Email.valid && Email.touched, 'is-invalid': Email.invalid && Email.touched}">
                                             </div>
                                         </div>
@@ -112,7 +112,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="tel" [(ngModel)]="model.Celular" #Celular="ngModel"
-                                                    name="Celular" class="form-control" required placeholder="Celular" pattern="\d*"
+                                                    name="Celular" class="form-control" required placeholder="Celular"
+                                                    pattern="\d*"
                                                     [ngClass]="{'is-valid': Celular.valid && Celular.touched, 'is-invalid': Celular.invalid && Celular.touched}">
                                             </div>
                                         </div>
@@ -130,7 +131,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="tel" [(ngModel)]="model.Telefono" #Telefono="ngModel"
-                                                    name="Telefono" class="form-control" required placeholder="Telefono" pattern="\d*"
+                                                    name="Telefono" class="form-control" required placeholder="Telefono"
+                                                    pattern="\d*"
                                                     [ngClass]="{'is-valid': Telefono.valid && Telefono.touched, 'is-invalid': Telefono.invalid && Telefono.touched}">
                                             </div>
                                         </div>
@@ -150,14 +152,15 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <select [(ngModel)]="model.Provincia" #ProvinciaId="ngModel"
-                                                        class="form-control" name="ProvinciaId" required (change)="cargarCiudades()"
-                                                        [ngClass]="{'is-valid': ProvinciaId.valid && ProvinciaId.touched, 'is-invalid': ProvinciaId.invalid && ProvinciaId.touched}">
-                                                        <option value="">Provincia
-                                                        </option>
-                                                        <option *ngFor="let i of provincias" [value]="i.id">
-                                                            {{i.nombre}}
-                                                        </option>
-                                                    </select>
+                                                    class="form-control" name="ProvinciaId" required
+                                                    (change)="cargarCiudades()"
+                                                    [ngClass]="{'is-valid': ProvinciaId.valid && ProvinciaId.touched, 'is-invalid': ProvinciaId.invalid && ProvinciaId.touched}">
+                                                    <option value="">Provincia
+                                                    </option>
+                                                    <option *ngFor="let i of provincias" [value]="i.id">
+                                                        {{i.nombre}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div *ngIf="ProvinciaId.errors && (ProvinciaId.dirty || ProvinciaId.touched)"
@@ -174,14 +177,14 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <select [(ngModel)]="model.Ciudad" #CiudadId="ngModel"
-                                                        class="form-control" name="CiudadId" required
-                                                        [ngClass]="{'is-valid': CiudadId.valid && CiudadId.touched, 'is-invalid': CiudadId.invalid && CiudadId.touched}">
-                                                        <option value="">Ciudad
-                                                        </option>
-                                                        <option *ngFor="let i of ciudades" [value]="i.id">
-                                                            {{i.nombre}}
-                                                        </option>
-                                                    </select>
+                                                    class="form-control" name="CiudadId" required
+                                                    [ngClass]="{'is-valid': CiudadId.valid && CiudadId.touched, 'is-invalid': CiudadId.invalid && CiudadId.touched}">
+                                                    <option value="">Ciudad
+                                                    </option>
+                                                    <option *ngFor="let i of ciudades" [value]="i.id">
+                                                        {{i.nombre}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div *ngIf="CiudadId.errors && (CiudadId.dirty || CiudadId.touched)"
@@ -219,9 +222,9 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="date" [(ngModel)]="model.FechaNacimiento"
-                                                    #FechaNacimiento="ngModel" name="FechaNacimiento"
-                                                    min="1922-01-01" max="2003-01-01"
-                                                    class="form-control" required placeholder="FechaNacimiento"
+                                                    #FechaNacimiento="ngModel" name="FechaNacimiento" min="1922-01-01"
+                                                    max="2003-01-01" class="form-control" required
+                                                    placeholder="FechaNacimiento"
                                                     [ngClass]="{'is-valid': FechaNacimiento.valid && FechaNacimiento.touched, 'is-invalid': FechaNacimiento.invalid && FechaNacimiento.touched}">
                                             </div>
                                         </div>
@@ -239,8 +242,9 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <input type="text" [(ngModel)]="model.Usuario" #Usuario="ngModel"
-                                                    minlength="3" maxlength="30" 
-                                                    name="Usuario" class="form-control" required placeholder="Usuario"
+                                                    minlength="3" maxlength="30"
+                                                    (focusout)="usuarioExist(datosPersonalesForm)" name="Usuario"
+                                                    class="form-control" required placeholder="Usuario"
                                                     [ngClass]="{'is-valid': Usuario.valid && Usuario.touched, 'is-invalid': Usuario.invalid && Usuario.touched}">
                                             </div>
                                         </div>
@@ -248,6 +252,15 @@
                                             class="with-errors errors">
                                             <div [hidden]="!Usuario.errors.required">
                                                 Usuario no puede estar vacío.
+                                            </div>
+                                            <div [hidden]="!Usuario.errors.minlength">
+                                                El usuario debe contener al menos 3 caracteres.
+                                            </div>
+                                            <div [hidden]="!Usuario.errors.maxlength">
+                                                El usuario debe contener 30 caracteres máximo.
+                                            </div>
+                                            <div [hidden]="!Usuario.errors.notUnique">
+                                                El usuario ya existe.
                                             </div>
                                         </div>
                                     </div>
@@ -289,31 +302,60 @@
                             ngNativeValidate>
                             <div class="row pt-4">
                                 <!-- MARCA -->
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-10">
-                                                <input type="text" [(ngModel)]="model.Marca" #Marca="ngModel"
-                                                    name="Marca" class="form-control" required placeholder="Marca"
-                                                    [ngClass]="{'is-valid': Marca.valid && Marca.touched, 'is-invalid': Marca.invalid && Marca.touched}">
+                                                <select [(ngModel)]="model.Marca" #MarcaId="ngModel"
+                                                    class="form-control" name="MarcaId" required
+                                                    [ngClass]="{'is-valid': MarcaId.valid && MarcaId.touched, 'is-invalid': MarcaId.invalid && MarcaId.touched}">
+                                                    <option value="">Marca
+                                                    </option>
+                                                    <option *ngFor="let i of marcas" [value]="i.codigo">
+                                                        {{i.desc}}
+                                                    </option>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div *ngIf="Marca.errors && (Marca.dirty || Marca.touched)"
-                                            class="with-errors errors">
-                                            <div [hidden]="!Marca.errors.required">
-                                                Marca no puede estar vacío.
+                                            <div *ngIf="MarcaId.errors && (MarcaId.dirty || MarcaId.touched)"
+                                                class="with-errors errors">
+                                                <div [hidden]="!MarcaId.errors.required">
+                                                    Marca no puede estar vacío.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- AÑO -->
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-10">
-                                                <input type="text" [(ngModel)]="model.Anio" #Anio="ngModel" name="Anio"
-                                                    class="form-control" required placeholder="Anio"
+                                                <select [(ngModel)]="model.Anio" #Anio="ngModel" class="form-control"
+                                                    name="Anio" required (change)="getModelos()"
                                                     [ngClass]="{'is-valid': Anio.valid && Anio.touched, 'is-invalid': Anio.invalid && Anio.touched}">
+                                                    <option value="">Año</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div *ngIf="Anio.errors && (Anio.dirty || Anio.touched)"
@@ -324,16 +366,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row pt-4">
+
                                 <!-- MODELO -->
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-10">
-                                                <input type="text" [(ngModel)]="model.Modelo" #Modelo="ngModel"
-                                                    name="Modelo" class="form-control" required placeholder="Modelo"
+                                                <select [(ngModel)]="model.Modelo" #Modelo="ngModel"
+                                                    class="form-control" name="Modelo" required
                                                     [ngClass]="{'is-valid': Modelo.valid && Modelo.touched, 'is-invalid': Modelo.invalid && Modelo.touched}">
+                                                    <option value="">Modelo
+                                                    </option>
+                                                    <option *ngFor="let i of modelos" [value]="i">
+                                                        {{i}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div *ngIf="Modelo.errors && (Modelo.dirty || Modelo.touched)"
@@ -345,7 +392,7 @@
                                     </div>
                                 </div>
                                 <!-- VERSION -->
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-10">
@@ -362,6 +409,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row pt-4">
                                 <div class="col">

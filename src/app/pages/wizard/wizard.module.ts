@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { MockMercantilAndinaService } from 'src/app/services/mock-mercantil-andina.service';
 import { DatosGeograficosService } from 'src/app/services/datos-geograficos.service';
+import { MercantilAndinaService } from 'src/app/services/mercantil-andina.service';
 
 const ngWizardConfig: NgWizardConfig = {
     theme: THEME.arrows
@@ -26,7 +27,8 @@ const ngWizardConfig: NgWizardConfig = {
     ],
     providers: [
         MockMercantilAndinaService,
-        DatosGeograficosService
+        DatosGeograficosService,
+        MercantilAndinaService
     ]
 })
 export class WizardModule { }

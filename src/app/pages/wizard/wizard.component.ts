@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { MockMercantilAndinaService } from 'src/app/services/mock-mercantil-andina.service';
 import { Cobertura } from 'src/app/model/cobertura';
 import { DatosGeograficosService } from 'src/app/services/datos-geograficos.service';
+import { MercantilAndinaService } from 'src/app/services/mercantil-andina.service';
 
 
 @Component({
@@ -22,15 +23,23 @@ export class WizardComponent implements OnInit {
     coberturas: Cobertura[];
     provincias: any[] = [];
     ciudades: any[] = [];
+    marcas: any[] = [];
+    modelos: any[] = [];
+    versiones: any[] = [];
+    usuarioRepetido = false;
 
     constructor(
         private ngWizardService: NgWizardService,
         private mockMercantilAndinaService: MockMercantilAndinaService,
-        private datosGeograficosService: DatosGeograficosService
+        private datosGeograficosService: DatosGeograficosService,
+        private mercantilAndinaService: MercantilAndinaService
     ) {
         this.getCoberturasDisponibles();
         this.getProvincias();
+        this.getMarcas();
+        this.model.Anio = '';
     }
+
     stepStates = {
         normal: STEP_STATE.normal,
         disabled: STEP_STATE.disabled,
@@ -60,14 +69,6 @@ export class WizardComponent implements OnInit {
     datosVehiculoNext(form: NgForm): void {
         this.datosVehiculoForm = form;
         this.ngWizardService.next();
-    }
-
-    markAsTouched(form: NgForm) {
-        for (const key in form.controls) {
-            form.controls[key].markAsTouched();
-            form.controls[key].markAsDirty();
-        }
-        return true;
     }
 
     ngOnInit(): void {
@@ -107,6 +108,56 @@ export class WizardComponent implements OnInit {
             .catch(error => this.handleError(error));
     }
 
+    public usuarioExist(form: NgForm): void {
+        this.mockMercantilAndinaService.usuarioExist(this.model.Usuario)
+            .then(
+                data => {
+                    this.usuarioRepetido = data;
+                    if (this.usuarioRepetido) {
+                        form.controls.Usuario.setErrors({
+                            notUnique: true
+                        });
+                    }
+                })
+            .catch(error => this.handleError(error));
+    }
+
+    private getMarcas(): void {
+        this.mercantilAndinaService.getMarcasList()
+            .then(
+                data => {
+                    if (data != null) {
+                        this.marcas = data;
+                        this.model.Marca = '';
+                    }
+                })
+            .catch(error => this.handleError(error));
+    }
+
+    public getModelos(): void {
+        this.mercantilAndinaService.getModelosList(this.model.Marca, this.model.Anio)
+            .then(
+                data => {
+                    if (data != null && data.modelos != null) {
+                        this.modelos = data.modelos;
+                        this.model.Modelo = '';
+                    }
+                })
+            .catch(error => this.handleError(error));
+    }
+
+    public getVersiones(): void {
+        this.mercantilAndinaService.getVersionesList(this.model.Marca, this.model.Anio, this.model.Modelo)
+            .then(
+                data => {
+                    if (data != null && data.versiones != null) {
+                        this.versiones = data.versiones;
+                        this.model.Version = '';
+                    }
+                })
+            .catch(error => this.handleError(error));
+    }
+
     showPreviousStep(event?: Event): void {
         this.ngWizardService.previous();
     }
@@ -140,8 +191,15 @@ export class WizardComponent implements OnInit {
         return of(true);
     }
 
+    markAsTouched(form: NgForm) {
+        for (const key in form.controls) {
+            form.controls[key].markAsTouched();
+            form.controls[key].markAsDirty();
+        }
+        return true;
+    }
+
     private handleError(error): void {
-        // this.app.showLoader = false;
-        // this.app.showNotification('error', error);
+        console.log(error);
     }
 }
