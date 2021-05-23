@@ -27,7 +27,7 @@ export class MercantilAndinaService {
     }
 
     // SERVICIO PARA OBTENER LOS MODELOS
-    async getModelosList(codigo: number, anio: number): Promise<any> {
+    async getModelosList(codigo: string, anio: string): Promise<any> {
         try {
             const response = await this.http
                 .get(`${BASE_API}/vehiculos/marcas/${codigo}/${anio}`, HTTP_OPTIONS)
@@ -39,7 +39,7 @@ export class MercantilAndinaService {
     }
 
     // SERVICIO PARA OBTENER LAS VERSIONES
-    async getVersionesList(codigo: number, anio: number, modelo: number): Promise<any> {
+    async getVersionesList(codigo: string, anio: string, modelo: string): Promise<any> {
         try {
             const response = await this.http
                 .get(`${BASE_API}/vehiculos/marcas/${codigo}/${anio}/${modelo}`, HTTP_OPTIONS)

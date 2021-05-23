@@ -7,7 +7,11 @@ export class Usuario {
     Email: string;
     Celular: number;
     Telefono: number;
-    Ubicacion: string;
+    ProvinciaId: string;
+    Provincia: string;
+    CiudadId: string;
+    Ciudad: string;
+    Domicilio: string;
     FechaNacimiento: string;
     Usuario: string;
     Password: string;
