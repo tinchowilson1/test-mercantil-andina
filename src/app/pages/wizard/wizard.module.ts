@@ -20,7 +20,7 @@ const ngWizardConfig: NgWizardConfig = {
         NgWizardModule.forRoot(ngWizardConfig),
         ReactiveFormsModule,
         CommonModule,
-        FormsModule
+        FormsModule,
     ],
     declarations: [
         WizardComponent,

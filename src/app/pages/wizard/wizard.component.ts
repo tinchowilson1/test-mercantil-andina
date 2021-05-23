@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { Cobertura } from 'src/app/model/cobertura';
 import { Usuario } from 'src/app/model/usuario';
@@ -31,14 +32,14 @@ export class WizardComponent implements OnInit {
     marcas: any[] = [];
     modelos: any[] = [];
     versiones: any[] = [];
-    botonFinalizar: any[] = [];
     usuarioRepetido = false;
 
     constructor(
         private ngWizardService: NgWizardService,
         private mockMercantilAndinaService: MockMercantilAndinaService,
         private datosGeograficosService: DatosGeograficosService,
-        private mercantilAndinaService: MercantilAndinaService
+        private mercantilAndinaService: MercantilAndinaService,
+        private toastr: ToastrService
     ) {
         this.getCoberturasDisponibles();
         this.getProvincias();
@@ -61,8 +62,7 @@ export class WizardComponent implements OnInit {
         lang: { next: 'Siguiente', previous: 'Anterior' },
         toolbarSettings: {
             showNextButton: false,
-            showPreviousButton: false,
-            toolbarExtraButtons: this.botonFinalizar,
+            showPreviousButton: false
         }
     };
 
@@ -201,13 +201,14 @@ export class WizardComponent implements OnInit {
     stepChanged(args: StepChangedArgs): void {
         if (args.position === 'final') {
             this.showNextButton = false;
-            this.botonFinalizar = [
-                { text: 'Finalizar', class: 'btn btn-dark', event: () => { alert('Finished!!!'); } }
-            ];
         } else {
             this.showNextButton = true;
         }
         console.log(args.step);
+    }
+
+    enviarDatos(): void {
+        this.toastr.success('Los datos fueron enviados correctamente', 'Éxito');
     }
 
     isValidFunctionReturnsBoolean(args: StepValidationArgs): boolean {

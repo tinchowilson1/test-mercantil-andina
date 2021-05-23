@@ -177,7 +177,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <select [(ngModel)]="usuario.CiudadId" #CiudadId="ngModel"
-                                                    class="form-control" name="CiudadId" required (change)="guardarCiudad()"
+                                                    class="form-control" name="CiudadId" required
+                                                    (change)="guardarCiudad()"
                                                     [ngClass]="{'is-valid': CiudadId.valid && CiudadId.touched, 'is-invalid': CiudadId.invalid && CiudadId.touched}">
                                                     <option value="">Ciudad
                                                     </option>
@@ -307,7 +308,8 @@
                                         <div class="row">
                                             <div class="col-10">
                                                 <select [(ngModel)]="vehiculo.MarcaId" #MarcaId="ngModel"
-                                                    class="form-control" name="MarcaId" required (change)="guardarMarca()"
+                                                    class="form-control" name="MarcaId" required
+                                                    (change)="guardarMarca()"
                                                     [ngClass]="{'is-valid': MarcaId.valid && MarcaId.touched, 'is-invalid': MarcaId.invalid && MarcaId.touched}">
                                                     <option value="">Marca
                                                     </option>
@@ -472,7 +474,8 @@
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-info btn-sm" (click)="seleccionarCobertura(item)">SELECCIONAR</button>
+                                            <button type="button" class="btn btn-info btn-sm"
+                                                (click)="seleccionarCobertura(item)">SELECCIONAR</button>
                                         </div>
                                     </div>
                                 </div>
@@ -572,9 +575,15 @@
                                         <span>{{coberturaSeleccionada.titulo}}</span>
                                     </div>
                                 </div>
-                                <button type="button" (click)="showPreviousStep()"
-                                    class="btn btn-primary btn-block float-end">
-                                    ANTERIOR</button>
+                                <div class="row pt-4">
+                                    <div class="col">
+                                        <button type="button" (click)="enviarDatos()" class="btn btn-success btn-block float-end">
+                                            FINALIZAR</button>
+                                        <button type="button" (click)="showPreviousStep()"
+                                            class="btn btn-primary btn-block float-end">
+                                            ANTERIOR</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </ng-wizard-step>
