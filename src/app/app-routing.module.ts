@@ -3,11 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'wizard',
-    loadChildren: () => import('./pages/wizard/wizard.module').then(m => m.WizardModule),
+    path: 'datos-personales',
+    loadChildren: () => import('./pages/datos-personales/datos-personales.module').then(m => m.DatosPersonalesModule),
+  },
+  {
+    path: 'datos-vehiculo',
+    loadChildren: () => import('./pages/datos-vehiculo/datos-vehiculo.module').then(m => m.DatosVehiculoModule),
+  },
+  {
+    path: 'coberturas-disponibles',
+    loadChildren: () => import('./pages/coberturas-disponibles/coberturas-disponibles.module').then(m => m.CoberturasDisponiblesModule),
+  },
+  {
+    path: 'resumen',
+    loadChildren: () => import('./pages/resumen/resumen.module').then(m => m.ResumenModule),
   },
   // si no existe ir a pantalla por defecto
-  { path: '**', redirectTo: 'wizard' },
+  { path: '**', redirectTo: 'datos-personales' },
 ];
 
 @NgModule({

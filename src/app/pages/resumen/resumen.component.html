@@ -1,0 +1,91 @@
+<div class="row pt-4">
+    <div class="col">
+        <h3>DATOS PERSONALES</h3>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>NOMBRE y APELLIDO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Nombre}} {{usuario.Apellido}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>DNI:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.DNI}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>EMAIL:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Email}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>CELULAR:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Celular}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>TELÉFONO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Telefono}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>UBICACIÓN:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Provincia}}, {{usuario.Ciudad}}, {{usuario.Domicilio}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>FECHA DE NACIMIENTO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.FechaNacimiento}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>USUARIO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{usuario.Usuario}}</span>
+            </div>
+        </div>
+        <h3>DATOS DEL VEHÍCULO</h3>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>MARCA:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{vehiculo.Marca}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>MODELO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{vehiculo.Modelo}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>AÑO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{vehiculo.Anio}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>VERSIÓN:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{vehiculo.Version}}</span>
+            </div>
+        </div>
+        <h3>COBERTURA</h3>
+        <div class="row">
+            <div class="col-6 text-right"><span><b>TÍTULO:</b></span></div>
+            <div class="col-6 text-left">
+                <span>{{coberturaSeleccionada.titulo}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row pt-4">
+    <div class="col">
+        <button type="button" (click)="appComponent.showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
+            ANTERIOR</button>
+    </div>
+</div>

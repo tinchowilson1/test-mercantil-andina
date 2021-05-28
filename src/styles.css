@@ -14,10 +14,26 @@
 
 /* IMPORTS WIZARD */
 
-.black-body {
-    /* background-color: #1f1f1f; */
+body {
+    background-color: lightgray;
+}
+
+.center-body {
     margin-top: 60px;
     height: 100vh;
 }
 
+.bg-mercantil {
+    background-color: #006ca5;
+}
+
+.font-mercantil {
+    color: #0074ad;
+    text-align: center;
+}
+
+.wizard {
+    border: 1px solid darkgrey;
+    background-color: white;
+}
 

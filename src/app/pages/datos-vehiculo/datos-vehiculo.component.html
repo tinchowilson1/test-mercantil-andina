@@ -1,0 +1,120 @@
+<form id="datosVehiculoForm" #datosVehiculoForm="ngForm"
+    (ngSubmit)="appComponent.markAsTouched(datosVehiculoForm) && datosVehiculoForm.form.valid && appComponent.datosVehiculoNext(datosVehiculoForm)"
+    ngNativeValidate>
+    <div class="row pt-4">
+        <!-- MARCA -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-10">
+                        <select [(ngModel)]="vehiculo.MarcaId" #MarcaId="ngModel" class="form-control" name="MarcaId"
+                            required (change)="guardarMarca()"
+                            [ngClass]="{'is-valid': MarcaId.valid && MarcaId.touched, 'is-invalid': MarcaId.invalid && MarcaId.touched}">
+                            <option value="">Marca
+                            </option>
+                            <option *ngFor="let i of marcas" [value]="i.codigo">
+                                {{i.desc}}
+                            </option>
+                        </select>
+                    </div>
+                    <div *ngIf="MarcaId.errors && (MarcaId.dirty || MarcaId.touched)" class="with-errors errors">
+                        <div [hidden]="!MarcaId.errors.required">
+                            Marca no puede estar vacío.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AÑO -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-10">
+                        <select [(ngModel)]="vehiculo.Anio" #Anio="ngModel" class="form-control" name="Anio" required
+                            (change)="getModelos()"
+                            [ngClass]="{'is-valid': Anio.valid && Anio.touched, 'is-invalid': Anio.invalid && Anio.touched}">
+                            <option value="">Año</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf="Anio.errors && (Anio.dirty || Anio.touched)" class="with-errors errors">
+                    <div [hidden]="!Anio.errors.required">
+                        Año no puede estar vacío.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODELO -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-10">
+                        <select [(ngModel)]="vehiculo.Modelo" #Modelo="ngModel" class="form-control" name="Modelo"
+                            required (change)="getVersiones()"
+                            [ngClass]="{'is-valid': Modelo.valid && Modelo.touched, 'is-invalid': Modelo.invalid && Modelo.touched}">
+                            <option value="">Modelo
+                            </option>
+                            <option *ngFor="let i of modelos" [value]="i">
+                                {{i}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf="Modelo.errors && (Modelo.dirty || Modelo.touched)" class="with-errors errors">
+                    <div [hidden]="!Modelo.errors.required">
+                        Modelo no puede estar vacío.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- VERSION -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-10">
+                        <select [(ngModel)]="vehiculo.VersionId" #Version="ngModel" class="form-control" name="Version"
+                            (change)="guardarVersion()"
+                            [ngClass]="{'is-valid': Version.valid && Version.touched, 'is-invalid': Version.invalid && Version.touched}">
+                            <option value="">Version
+                            </option>
+                            <option *ngFor="let i of versiones" [value]="i.codigo">
+                                {{i.desc}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row pt-4">
+        <div class="col">
+            <button type="submit" class="btn btn-primary btn-block float-end bg-mercantil">
+                SIGUIENTE</button>
+            <button type="button" (click)="appComponent.showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
+                ANTERIOR</button>
+        </div>
+    </div>
+</form>

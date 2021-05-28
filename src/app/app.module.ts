@@ -8,18 +8,28 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgWizardConfig, NgWizardModule, THEME } from 'ng-wizard';
+import { SharedModule } from './utils/shared.module';
+import { HeaderModule } from './templates/header/header.module';
+
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.arrows
+};
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
+    // CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgWizardModule.forRoot(ngWizardConfig),
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,59 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 justify-content-center mt-4">
+    <div class="col mb-2" *ngFor="let item of coberturas">
+        <div class="card">
+            <div class="card-body text-center" style="padding: 0.5rem;">
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>TITULO:</b></span></div>
+                    <div class="col-6 text-left">
+                        <span><b>{{item.titulo}}</b></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>CÓDIGO:</b></span></div>
+                    <div class="col-6 text-left"><span>{{item.codigoProducto}}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>PRODUCTO:</b></span></div>
+                    <div class="col-6 text-left">
+                        <span>{{item.producto}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>COSTO:</b></span></div>
+                    <div class="col-6 text-left">
+                        <span>$ {{item.costo}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>DESCRIPCIÓN</b></span>
+                    </div>
+                    <div class="col-6 text-left">
+                        <span>{{item.descripcion}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>FRANQUICIA:</b></span></div>
+                    <div class="col-6 text-left">
+                        <span>$ {{item.franquicia}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-right"><span><b>GRANIZO:</b></span></div>
+                    <div class="col-6 text-left">
+                        <span>{{item.granizo}}</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary btn-sm bg-mercantil"
+                        (click)="appComponent.seleccionarCobertura(item)">SELECCIONAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row pt-4">
+    <div class="col">
+        <button type="button" (click)="appComponent.showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
+            ANTERIOR</button>
+    </div>
+</div>

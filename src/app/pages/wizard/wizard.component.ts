@@ -72,7 +72,7 @@ export class WizardComponent implements OnInit {
         this.ngWizardService.next();
     }
 
-    datosVehiculoNext(form: NgForm): void {
+    public datosVehiculoNext(form: NgForm): void {
         this.datosVehiculoForm = form;
         this.ngWizardService.next();
     }
