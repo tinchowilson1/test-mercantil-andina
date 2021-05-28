@@ -27,6 +27,14 @@ body {
     background-color: #006ca5;
 }
 
+.bg-btn-mercantil {
+    background-color: #006ca5;
+}
+
+.bg-btn-mercantil:hover {
+    background-color: #015d93;
+}
+
 .font-mercantil {
     color: #0074ad;
     text-align: center;
@@ -37,4 +45,14 @@ body {
     background-color: white;
     margin-bottom: 136px;
 }
+
+.btn-margin {
+    margin-right: 5px;
+}
+
+.card {
+    background-color: ghostwhite !important;
+}
+
+
 

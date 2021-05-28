@@ -14,9 +14,6 @@ import { Router } from '@angular/router';
 })
 
 export class ResumenComponent implements OnInit {
-    usuario = new Usuario();
-    vehiculo = new Vehiculo();
-    coberturaSeleccionada = new Cobertura();
 
     constructor(
         private toastr: ToastrService,
@@ -27,6 +24,7 @@ export class ResumenComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        window.scroll(0, 0);
     }
 
     enviarDatos(): void {

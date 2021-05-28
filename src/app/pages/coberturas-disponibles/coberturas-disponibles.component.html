@@ -1,50 +1,60 @@
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 justify-content-center mt-4">
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 justify-content-center mt-4">
     <div class="col mb-2" *ngFor="let item of coberturas">
         <div class="card">
-            <div class="card-body text-center" style="padding: 0.5rem;">
+            <div class="card-header text-center">
+                <h5 class="card-title">{{item.titulo}}</h5>
+            </div>
+            <div class="card-body text-center">
                 <div class="row">
-                    <div class="col-6 text-right"><span><b>TITULO:</b></span></div>
-                    <div class="col-6 text-left">
-                        <span><b>{{item.titulo}}</b></span>
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">CÓDIGO</h5>
+                    </div>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">{{item.codigoProducto}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 text-right"><span><b>CÓDIGO:</b></span></div>
-                    <div class="col-6 text-left"><span>{{item.codigoProducto}}</span></div>
-                </div>
-                <div class="row">
-                    <div class="col-6 text-right"><span><b>PRODUCTO:</b></span></div>
-                    <div class="col-6 text-left">
-                        <span>{{item.producto}}</span>
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">PRODUCTO:</h5>
+                    </div>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">{{item.producto}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 text-right"><span><b>COSTO:</b></span></div>
-                    <div class="col-6 text-left">
-                        <span>$ {{item.costo}}</span>
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">COSTO:</h5>
+                    </div>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">$ {{item.costo}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 text-right"><span><b>DESCRIPCIÓN</b></span>
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">DESCRIPCIÓN:</h5>
                     </div>
-                    <div class="col-6 text-left">
-                        <span>{{item.descripcion}}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 text-right"><span><b>FRANQUICIA:</b></span></div>
-                    <div class="col-6 text-left">
-                        <span>$ {{item.franquicia}}</span>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">{{item.descripcion}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 text-right"><span><b>GRANIZO:</b></span></div>
-                    <div class="col-6 text-left">
-                        <span>{{item.granizo}}</span>
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">FRANQUICIA:</h5>
+                    </div>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">$ {{item.franquicia}}</p>
                     </div>
                 </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-primary btn-sm bg-mercantil"
+                <div class="row">
+                    <div class="col-6 col-md-4 text-end">
+                        <h5 class="card-title">GRANIZO:</h5>
+                    </div>
+                    <div class="col-6 col-md-8 text-uppercase">
+                        <p class="card-text">{{item.granizoMostrar}}</p>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-primary btn-sm bg-btn-mercantil"
                         (click)="guardarDatos(item)">SELECCIONAR</button>
                 </div>
             </div>
@@ -52,8 +62,11 @@
     </div>
 </div>
 <div class="row pt-4">
-    <div class="col">
-        <button type="button" (click)="showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
+    <div class="col text-end">
+        <button type="button" (click)="showPreviousStep()" class="btn btn-primary bg-btn-mercantil btn-margin">
             ANTERIOR</button>
+        <button *ngIf="appComponent.step3Complete" type="button" (click)="showNextStep()"
+            class="btn btn-primary bg-btn-mercantil">
+            SIGUIENTE</button>
     </div>
 </div>
