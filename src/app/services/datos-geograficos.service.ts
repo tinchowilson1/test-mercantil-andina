@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
     })
 };
-const BASE_API = 'https://apis.datos.gob.ar/georef/api';
+const BASE_API = environment.urlDatosGeograficos;
 
 @Injectable()
 export class DatosGeograficosService {

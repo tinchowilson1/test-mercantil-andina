@@ -35,5 +35,6 @@ body {
 .wizard {
     border: 1px solid darkgrey;
     background-color: white;
+    margin-bottom: 136px;
 }
 

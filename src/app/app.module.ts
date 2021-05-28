@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgWizardConfig, NgWizardModule, THEME } from 'ng-wizard';
 import { SharedModule } from './utils/shared.module';
 import { HeaderModule } from './templates/header/header.module';
+import { FooterModule } from './templates/footer/footer.module';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.arrows
@@ -29,7 +30,8 @@ const ngWizardConfig: NgWizardConfig = {
     AppRoutingModule,
     HttpClientModule,
     NgWizardModule.forRoot(ngWizardConfig),
-    HeaderModule
+    HeaderModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

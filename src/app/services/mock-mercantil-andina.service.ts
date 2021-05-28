@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 const HTTP_OPTIONS = {
@@ -7,7 +8,7 @@ const HTTP_OPTIONS = {
         'Content-Type': 'application/json'
     })
 };
-const BASE_API = 'https://servicios.qamercantilandina.com.ar/api_mock_frontend/v1';
+const BASE_API = environment.urlMockMercantil;
 
 @Injectable()
 export class MockMercantilAndinaService {

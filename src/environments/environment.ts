@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlDatosGeograficos: 'https://apis.datos.gob.ar/georef/api',
+  urlServicioMercantil: 'https://servicios.qamercantilandina.com.ar/api/v1',
+  urlMockMercantil: 'https://servicios.qamercantilandina.com.ar/api_mock_frontend/v1'
 };
 
 /*

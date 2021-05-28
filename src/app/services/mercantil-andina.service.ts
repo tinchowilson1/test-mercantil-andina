@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
     })
 };
-const BASE_API = 'https://servicios.qamercantilandina.com.ar/api/v1';
+const BASE_API = environment.urlServicioMercantil;
 
 @Injectable()
 export class MercantilAndinaService {

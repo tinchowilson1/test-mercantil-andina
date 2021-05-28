@@ -1,26 +1,29 @@
 <app-header></app-header>
-    <div class="container mt-4 p-2 wizard">
-        <div class="row justify-content-center">
-            <div class="col align-self-center">
-                <h1 class="font-mercantil">Cotizá tu auto</h1>
-                <ul class="nav nav-pills nav-justified">
-                    <li class="nav-item">
-                        <a class="nav-link bg-mercantil" [ngClass]="{'active': step === 1}"
-                            [routerLink]="['/datos-personales']">1. <br> DATOS PERSONALES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [ngClass]="{'active': step === 2}" [routerLink]="['/datos-vehiculo']">2. <br> DATOS DEL VEHÍCULO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [ngClass]="{'active': step === 3}"
-                            [routerLink]="['/coberturas-disponibles']">3. <br> COBERTURAS DISPONIBLES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [ngClass]="{'active': step === 4}" [routerLink]="['/resumen']">4. <br> RESUMEN</a>
-                    </li>
-                </ul>
-                <router-outlet>
-                </router-outlet>
-            </div>
+<div class="container mt-4 p-2 wizard">
+    <div class="row justify-content-center">
+        <div class="col align-self-center">
+            <h1 class="font-mercantil">Cotizá tu auto</h1>
+            <ul class="nav nav-pills nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link bg-mercantil" [ngClass]="{'active': step === 1}"
+                        [routerLink]="['/datos-personales']">1. <br> DATOS PERSONALES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': step === 2}" [routerLink]="['/datos-vehiculo']">2. <br>
+                        DATOS DEL VEHÍCULO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': step === 3}" [routerLink]="['/coberturas-disponibles']">3.
+                        <br> COBERTURAS DISPONIBLES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': step === 4}" [routerLink]="['/resumen']">4. <br>
+                        RESUMEN</a>
+                </li>
+            </ul>
+            <router-outlet>
+            </router-outlet>
         </div>
+    </div>
 </div>
+<app-footer></app-footer>
