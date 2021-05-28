@@ -202,7 +202,7 @@
                     <div class="col-10">
                         <input type="date" [(ngModel)]="usuario.FechaNacimiento" #FechaNacimiento="ngModel"
                             name="FechaNacimiento" min="1922-01-01" max="2003-01-01" class="form-control" required
-                            placeholder="FechaNacimiento"
+                            placeholder="FechaNacimiento" (change)="correctDate(datosPersonalesForm)"
                             [ngClass]="{'is-valid': FechaNacimiento.valid && FechaNacimiento.touched, 'is-invalid': FechaNacimiento.invalid && FechaNacimiento.touched}">
                     </div>
                 </div>
@@ -210,6 +210,12 @@
                     class="with-errors errors">
                     <div [hidden]="!FechaNacimiento.errors.required">
                         FechaNacimiento no puede estar vacío.
+                    </div>
+                    <div [hidden]="!FechaNacimiento.errors.maxi">
+                        Debe tener menos de 99 años.
+                    </div>
+                    <div [hidden]="!FechaNacimiento.errors.mini">
+                        Debe tener al menos 18.
                     </div>
                 </div>
             </div>
@@ -220,7 +226,7 @@
                 <div class="row">
                     <div class="col-10">
                         <input type="text" [(ngModel)]="usuario.Usuario" #Usuario="ngModel" minlength="3" maxlength="30"
-                            (focusout)="usuarioExist(datosPersonalesForm)" name="Usuario" class="form-control" required
+                            (change)="usuarioExist(datosPersonalesForm)" name="Usuario" class="form-control" required
                             placeholder="Usuario"
                             [ngClass]="{'is-valid': Usuario.valid && Usuario.touched, 'is-invalid': Usuario.invalid && Usuario.touched}">
                     </div>

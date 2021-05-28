@@ -84,7 +84,7 @@ export class DatosVehiculoComponent implements OnInit {
                         this.versiones = data;
                         this.vehiculo.VersionId = '';
                         if (this.appComponent.vehiculo != null && this.appComponent.step2Complete) {
-                            this.appComponent.step2Complete = false;
+                            // this.appComponent.step2Complete = false;
                             this.vehiculo = this.appComponent.vehiculo;
                         }
                     }

@@ -36,51 +36,7 @@ export class AppComponent {
   constructor(
     private router: Router,
   ) {
-  }
-
-  // stepStates = {
-  //   normal: STEP_STATE.normal,
-  //   disabled: STEP_STATE.disabled,
-  //   error: STEP_STATE.error,
-  //   hidden: STEP_STATE.hidden
-  // };
-
-  // config: NgWizardConfig = {
-  //   selected: 0,
-  //   theme: THEME.arrows,
-  //   lang: { next: 'Siguiente', previous: 'Anterior' },
-  //   toolbarSettings: {
-  //     showNextButton: false,
-  //     showPreviousButton: false
-  //   }
-  // };
-
-  // sendInfo(form: NgForm): void {
-  //   this.datosPersonalesForm = form;
-  //   // this.ngWizardService.next();
-  // }
-
-  // public datosVehiculoNext(form: NgForm): void {
-  //   this.datosVehiculoForm = form;
-  //   this.ngWizardService.next();
-  // }
-
-  // seleccionarCobertura(cobertura: Cobertura): void {
-  //   this.coberturaSeleccionada = cobertura;
-  //   this.ngWizardService.next();
-  // }
-
-  enviarDatos(): void {
-    // this.toastr.success('Los datos fueron enviados correctamente', 'Éxito');
-  }
-
-  showPreviousStep(event?: Event): void {
-    // this.ngWizardService.previous();
-  }
-
-  showNextStep(event?: Event): void {
-    this.router.navigate(['/register-inprocess']);
-    // this.ngWizardService.next();
+    this.router.navigate(['/datos-personales']);
   }
 
   markAsTouched(form: NgForm) {

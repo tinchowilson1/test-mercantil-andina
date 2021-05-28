@@ -31,7 +31,7 @@ export class DatosGeograficosService {
 async getMunicipios(idProvincia: string): Promise<any> {
     try {
         const response = await this.http
-            .get(`${BASE_API}/municipios?provincia=${idProvincia}&campos=id,nombre`, HTTP_OPTIONS)
+            .get(`${BASE_API}/municipios?provincia=${idProvincia}&campos=id,nombre&max=135`, HTTP_OPTIONS)
             .toPromise();
         return response;
     } catch (error) {

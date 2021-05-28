@@ -42,7 +42,7 @@ export class DatosPersonalesComponent implements OnInit {
             .then(
                 data => {
                     if (data != null && data.provincias != null) {
-                        this.provincias = data.provincias;
+                        this.provincias = data.provincias.sort((a, b) => (a.nombre > b.nombre) ? 1 : -1);
                         this.usuario.ProvinciaId = '';
                         if (this.appComponent.usuario != null && this.appComponent.step1Complete) {
                             this.usuario.ProvinciaId = this.appComponent.usuario.ProvinciaId;
@@ -59,7 +59,7 @@ export class DatosPersonalesComponent implements OnInit {
             .then(
                 data => {
                     if (data != null && data.municipios != null) {
-                        this.ciudades = data.municipios;
+                        this.ciudades = data.municipios.sort((a, b) => (a.nombre > b.nombre) ? 1 : -1);
                         this.usuario.CiudadId = '';
                         if (this.appComponent.usuario != null && this.appComponent.step1Complete) {
                             this.appComponent.step1Complete = false;
@@ -88,11 +88,37 @@ export class DatosPersonalesComponent implements OnInit {
             .catch(error => this.handleError(error));
     }
 
+    public correctDate(form: NgForm): void {
+        const hoy = new Date();
+        const cumpleanos = new Date(form.controls.FechaNacimiento.value);
+        let edad = hoy.getFullYear() - cumpleanos.getFullYear();
+        const m = hoy.getMonth() - cumpleanos.getMonth();
+
+        if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+            edad--;
+        }
+        if (edad < 18) {
+            form.controls.FechaNacimiento.setErrors({
+                mini: true
+            });
+        }
+
+        if (edad >= 99) {
+            form.controls.FechaNacimiento.setErrors({
+                maxi: true
+            });
+        }
+    }
+
     guardarDatos(form: NgForm): void {
         this.datosPersonalesForm = form;
-        this.appComponent.usuario = this.usuario;
-        this.appComponent.step1Complete = true;
-        this.router.navigate(['/datos-vehiculo']);
+        if (this.usuarioRepetido) {
+            this.appComponent.markAsTouched(form);
+        } else {
+            this.appComponent.usuario = this.usuario;
+            this.appComponent.step1Complete = true;
+            this.router.navigate(['/datos-vehiculo']);
+        }
     }
 
     private handleError(error): void {
