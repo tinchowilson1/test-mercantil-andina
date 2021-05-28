@@ -1,0 +1,16 @@
+
+@media all and (max-width: 1023px) {
+    .resumen-margin {
+        margin-top:  2rem !important;
+        margin-left: 0rem !important;
+        margin-right: 0rem !important;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .resumen-margin {
+        margin-top:  4rem !important;
+        margin-left: 10rem !important;
+        margin-right: 10rem !important;
+    }
+}

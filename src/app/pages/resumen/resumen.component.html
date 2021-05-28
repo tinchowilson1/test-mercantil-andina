@@ -1,97 +1,72 @@
-<div class="row pt-4">
-    <div class="col">
-        <h3>DATOS PERSONALES</h3>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>NOMBRE y APELLIDO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Nombre}} {{appComponent.usuario.Apellido}}</span>
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 justify-content-center resumen-margin">
+    <div class="col mx-6 align-self-center">
+        <div class="card float-center">
+            <div class="card-header">
+                DATOS PERSONALES
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>DNI:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.DNI}}</span>
+            <div class="card-body">
+                <h6 class="card-title">NOMBRE y APELLIDO</h6>
+                <p class="card-text">{{appComponent.usuario.Nombre}} {{appComponent.usuario.Apellido}}</p>
+
+                <h6 class="card-title">DNI</h6>
+                <p class="card-text">{{appComponent.usuario.DNI}}</p>
+
+                <h6 class="card-title">EMAIL</h6>
+                <p class="card-text">{{appComponent.usuario.Email}}</p>
+
+                <h6 class="card-title">CELULAR</h6>
+                <p class="card-text">{{appComponent.usuario.Celular}}</p>
+
+                <h6 class="card-title">TELÉFONO</h6>
+                <p class="card-text">{{appComponent.usuario.Telefono}}</p>
+
+                <h6 class="card-title">DOMICILIO</h6>
+                <p class="card-text">{{appComponent.usuario.Domicilio}}, {{appComponent.usuario.Ciudad}},
+                    {{appComponent.usuario.Provincia}}</p>
+
+                <h6 class="card-title">FECHA DE NACIMIENTO</h6>
+                <p class="card-text">{{appComponent.usuario.FechaNacimiento}}</p>
+
+                <h6 class="card-title">USUARIO</h6>
+                <p class="card-text">{{appComponent.usuario.Usuario}}</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>EMAIL:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Email}}</span>
+            <div class="card-header">
+                DATOS DEL VEHÍCULO
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>CELULAR:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Celular}}</span>
+            <div class="card-body">
+                <h6 class="card-title">MARCA</h6>
+                <p class="card-text">{{appComponent.vehiculo.Marca}}</p>
+
+                <h6 class="card-title">MODELO</h6>
+                <p class="card-text">{{appComponent.vehiculo.Modelo}}</p>
+
+                <h6 class="card-title">AÑO</h6>
+                <p class="card-text">{{appComponent.vehiculo.Anio}}</p>
+
+                <h6 class="card-title">VERSIÓN</h6>
+                <p class="card-text">{{appComponent.vehiculo.Version}}</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>TELÉFONO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Telefono}}</span>
+            <div class="card-header">
+                COBERTURA
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>UBICACIÓN:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Provincia}}, {{appComponent.usuario.Ciudad}}, {{appComponent.usuario.Domicilio}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>FECHA DE NACIMIENTO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.FechaNacimiento}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>USUARIO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.usuario.Usuario}}</span>
-            </div>
-        </div>
-        <h3>DATOS DEL VEHÍCULO</h3>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>MARCA:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.vehiculo.Marca}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>MODELO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.vehiculo.Modelo}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>AÑO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.vehiculo.Anio}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>VERSIÓN:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.vehiculo.Version}}</span>
-            </div>
-        </div>
-        <h3>COBERTURA</h3>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>TÍTULO:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.coberturaSeleccionada.titulo}}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-right"><span><b>DESCRIPCIÓN:</b></span></div>
-            <div class="col-6 text-left">
-                <span>{{appComponent.coberturaSeleccionada.descripcion}}</span>
+            <div class="card-body">
+                <h6 class="card-title">TÍTULO</h6>
+                <p class="card-text">{{appComponent.coberturaSeleccionada.titulo}}</p>
+
+                <h6 class="card-title">DESCRIPCIÓN</h6>
+                <p class="card-text">{{appComponent.coberturaSeleccionada.descripcion}}</p>
+
+                <h6 class="card-title">GRANIZO</h6>
+                <p class="card-text">{{appComponent.coberturaSeleccionada.granizoMostrar}}</p>
             </div>
         </div>
     </div>
 </div>
 <div class="row pt-4">
-    <div class="col">
-        <button type="button" (click)="showPreviousStep()" class="btn btn-primary btn-block float-end bg-btn-mercantil">
+    <div class="col text-end">
+        <button type="button" (click)="showPreviousStep()" class="btn btn-primary bg-btn-mercantil btn-margin">
             ANTERIOR</button>
+        <button type="button" (click)="enviarDatos()" class="btn btn-primary bg-btn-mercantil">
+            FINALIZAR</button>
     </div>
 </div>
