@@ -1,5 +1,5 @@
 <form id="datosPersonalesForm" #datosPersonalesForm="ngForm"
-    (ngSubmit)="appComponent.markAsTouched(datosPersonalesForm) && datosPersonalesForm.form.valid && appComponent.sendInfo(datosPersonalesForm)"
+    (ngSubmit)="appComponent.markAsTouched(datosPersonalesForm) && datosPersonalesForm.form.valid && guardarDatos(datosPersonalesForm)"
     ngNativeValidate>
     <div class="row p-4">
         <!-- DNI -->

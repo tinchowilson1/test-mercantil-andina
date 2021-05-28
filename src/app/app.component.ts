@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { Observable, of } from 'rxjs';
 import { Cobertura } from './model/cobertura';
@@ -13,6 +14,9 @@ import { Vehiculo } from './model/vehiculo';
 })
 export class AppComponent {
   step = 1;
+  step1Complete = false;
+  step2Complete = false;
+  step3Complete = false;
   title = 'test-mercantil-andina';
   showNextButton = true;
   isValidTypeBoolean = true;
@@ -30,41 +34,41 @@ export class AppComponent {
   usuarioRepetido = false;
 
   constructor(
-    private ngWizardService: NgWizardService
+    private router: Router,
   ) {
   }
 
-  stepStates = {
-    normal: STEP_STATE.normal,
-    disabled: STEP_STATE.disabled,
-    error: STEP_STATE.error,
-    hidden: STEP_STATE.hidden
-  };
+  // stepStates = {
+  //   normal: STEP_STATE.normal,
+  //   disabled: STEP_STATE.disabled,
+  //   error: STEP_STATE.error,
+  //   hidden: STEP_STATE.hidden
+  // };
 
-  config: NgWizardConfig = {
-    selected: 0,
-    theme: THEME.arrows,
-    lang: { next: 'Siguiente', previous: 'Anterior' },
-    toolbarSettings: {
-      showNextButton: false,
-      showPreviousButton: false
-    }
-  };
+  // config: NgWizardConfig = {
+  //   selected: 0,
+  //   theme: THEME.arrows,
+  //   lang: { next: 'Siguiente', previous: 'Anterior' },
+  //   toolbarSettings: {
+  //     showNextButton: false,
+  //     showPreviousButton: false
+  //   }
+  // };
 
-  sendInfo(form: NgForm): void {
-    this.datosPersonalesForm = form;
-    this.ngWizardService.next();
-  }
+  // sendInfo(form: NgForm): void {
+  //   this.datosPersonalesForm = form;
+  //   // this.ngWizardService.next();
+  // }
 
-  public datosVehiculoNext(form: NgForm): void {
-    this.datosVehiculoForm = form;
-    this.ngWizardService.next();
-  }
+  // public datosVehiculoNext(form: NgForm): void {
+  //   this.datosVehiculoForm = form;
+  //   this.ngWizardService.next();
+  // }
 
-  seleccionarCobertura(cobertura: Cobertura): void {
-    this.coberturaSeleccionada = cobertura;
-    this.ngWizardService.next();
-  }
+  // seleccionarCobertura(cobertura: Cobertura): void {
+  //   this.coberturaSeleccionada = cobertura;
+  //   this.ngWizardService.next();
+  // }
 
   enviarDatos(): void {
     // this.toastr.success('Los datos fueron enviados correctamente', 'Éxito');
@@ -75,6 +79,7 @@ export class AppComponent {
   }
 
   showNextStep(event?: Event): void {
+    this.router.navigate(['/register-inprocess']);
     // this.ngWizardService.next();
   }
 

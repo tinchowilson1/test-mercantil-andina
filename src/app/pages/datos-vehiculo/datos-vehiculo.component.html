@@ -1,5 +1,5 @@
 <form id="datosVehiculoForm" #datosVehiculoForm="ngForm"
-    (ngSubmit)="appComponent.markAsTouched(datosVehiculoForm) && datosVehiculoForm.form.valid && appComponent.datosVehiculoNext(datosVehiculoForm)"
+    (ngSubmit)="appComponent.markAsTouched(datosVehiculoForm) && datosVehiculoForm.form.valid && guardarDatos(datosVehiculoForm)"
     ngNativeValidate>
     <div class="row pt-4">
         <!-- MARCA -->
@@ -113,7 +113,7 @@
         <div class="col">
             <button type="submit" class="btn btn-primary btn-block float-end bg-mercantil">
                 SIGUIENTE</button>
-            <button type="button" (click)="appComponent.showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
+            <button type="button" (click)="showPreviousStep()" class="btn btn-primary btn-block float-end bg-mercantil">
                 ANTERIOR</button>
         </div>
     </div>

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Vehiculo } from 'src/app/model/vehiculo';
 import { MercantilAndinaService } from 'src/app/services/mercantil-andina.service';
 import { AppComponent } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class DatosVehiculoComponent implements OnInit {
     constructor(
         private mercantilAndinaService: MercantilAndinaService,
         public appComponent: AppComponent,
+        private router: Router
     ) {
         appComponent.step = 2;
         this.getMarcas();
@@ -47,6 +49,11 @@ export class DatosVehiculoComponent implements OnInit {
                     if (data != null) {
                         this.marcas = data;
                         this.vehiculo.MarcaId = '';
+                        if (this.appComponent.vehiculo != null && this.appComponent.step2Complete) {
+                            this.vehiculo.MarcaId = this.appComponent.vehiculo.MarcaId;
+                            this.vehiculo.Anio = this.appComponent.vehiculo.Anio;
+                            this.getModelos();
+                        }
                     }
                 })
             .catch(error => this.handleError(error));
@@ -59,6 +66,10 @@ export class DatosVehiculoComponent implements OnInit {
                     if (data != null) {
                         this.modelos = data;
                         this.vehiculo.Modelo = '';
+                        if (this.appComponent.vehiculo != null && this.appComponent.step2Complete) {
+                            this.vehiculo.Modelo = this.appComponent.vehiculo.Modelo;
+                            this.getVersiones();
+                        }
                     }
                 })
             .catch(error => this.handleError(error));
@@ -71,9 +82,24 @@ export class DatosVehiculoComponent implements OnInit {
                     if (data != null) {
                         this.versiones = data;
                         this.vehiculo.VersionId = '';
+                        if (this.appComponent.vehiculo != null && this.appComponent.step2Complete) {
+                            this.appComponent.step2Complete = false;
+                            this.vehiculo = this.appComponent.vehiculo;
+                        }
                     }
                 })
             .catch(error => this.handleError(error));
+    }
+
+    guardarDatos(form: NgForm): void {
+        this.datosVehiculoForm = form;
+        this.appComponent.vehiculo = this.vehiculo;
+        this.appComponent.step2Complete = true;
+        this.router.navigate(['/coberturas-disponibles']);
+    }
+
+    showPreviousStep(): void {
+        this.router.navigate(['/datos-personales']);
     }
 
     private handleError(error): void {

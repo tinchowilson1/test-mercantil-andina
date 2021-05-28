@@ -7,6 +7,7 @@ import { AppComponent } from 'src/app/app.component';
 
 import { MockMercantilAndinaService } from 'src/app/services/mock-mercantil-andina.service';
 import { DatosGeograficosService } from 'src/app/services/datos-geograficos.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class DatosPersonalesComponent implements OnInit {
         private mockMercantilAndinaService: MockMercantilAndinaService,
         private datosGeograficosService: DatosGeograficosService,
         public appComponent: AppComponent,
+        private router: Router
     ) {
         appComponent.step = 1;
         this.getProvincias();
@@ -41,6 +43,10 @@ export class DatosPersonalesComponent implements OnInit {
                     if (data != null && data.provincias != null) {
                         this.provincias = data.provincias;
                         this.usuario.ProvinciaId = '';
+                        if (this.appComponent.usuario != null && this.appComponent.step1Complete) {
+                            this.usuario.ProvinciaId = this.appComponent.usuario.ProvinciaId;
+                            this.cargarCiudades();
+                        }
                     }
                 })
             .catch(error => this.handleError(error));
@@ -54,6 +60,10 @@ export class DatosPersonalesComponent implements OnInit {
                     if (data != null && data.municipios != null) {
                         this.ciudades = data.municipios;
                         this.usuario.CiudadId = '';
+                        if (this.appComponent.usuario != null && this.appComponent.step1Complete) {
+                            this.appComponent.step1Complete = false;
+                            this.usuario = this.appComponent.usuario;
+                        }
                     }
                 })
             .catch(error => this.handleError(error));
@@ -75,6 +85,13 @@ export class DatosPersonalesComponent implements OnInit {
                     }
                 })
             .catch(error => this.handleError(error));
+    }
+
+    guardarDatos(form: NgForm): void {
+        this.datosPersonalesForm = form;
+        this.appComponent.usuario = this.usuario;
+        this.appComponent.step1Complete = true;
+        this.router.navigate(['/datos-vehiculo']);
     }
 
     private handleError(error): void {
