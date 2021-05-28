@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
-import { Observable, of } from 'rxjs';
 import { Cobertura } from './model/cobertura';
 import { Usuario } from './model/usuario';
 import { Vehiculo } from './model/vehiculo';
